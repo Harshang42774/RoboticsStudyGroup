@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
 	std_msgs
 	message_generation
 	controller_manager
+    roscpp
 )
 
 ## System dependencies are found with CMake's conventions
@@ -54,10 +55,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ### Generate services in the 'srv' folder
-#add_service_files(
-#   FILES
-#   GoToPosition.srv
-#)
+add_service_files(
+   FILES
+   GoToPosition.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -67,10 +68,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ### Generate added messages and services with any dependencies listed here
-#generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-#)
+generate_messages(
+   DEPENDENCIES
+   std_msgs  
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -198,3 +199,9 @@ target_link_libraries(rotator ${catkin_LIBRARIES})
 
 add_executable(key_controller src/key_controller.cpp)
 target_link_libraries(key_controller ${catkin_LIBRARIES})
+
+add_executable(mover src/mover.cpp)
+target_link_libraries(mover ${catkin_LIBRARIES})
+
+add_executable(camera src/camera.cpp)
+target_link_libraries(camera ${catkin_LIBRARIES})
